@@ -1,0 +1,304 @@
+.nav-item:hover .nav-link {
+  text-decoration: underline;
+}
+
+.profile-info {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  }
+
+.nav-item .profile:hover .profile-info {
+  display: block;
+}
+
+.profile-info a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.profile-info a:hover {
+  text-decoration: underline;
+}
+.profile-info p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.icon.user.outline {
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
+
+.search-icon img {
+  display: block;
+}
+
+.navbar-header,
+.navbar-footer {
+  width: 100%;
+  text-align: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #000;
+}
+
+.custom-hr-mobile {
+  background-color: #015AAA !important;
+  height: 3px;
+  border: none;
+}
+
+.badge-post {
+  color: #015AAA;
+  border-color: #015AAA;
+  padding: 0.5%;
+}
+.badge-post.active {
+  background-color: #015AAA !important;
+  color: white !important;
+}
+
+.bottom-nav {
+  background-color: #f7efef;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.date-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 3px 2px;
+  font-weight: bold;
+  color: #015AAA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge .day {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.badge .month {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.badge {
+  background-color: #FFFFFF;
+  color: #015AAA;
+  font-size: 16px;
+  padding: 3px 2px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+}
+
+.grow-card {
+  transition: transform 0.3s ease;
+  }
+
+  .grow-card:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 992px) {
+  .d-lg-none {
+    display: none; /* Menyembunyikan elemen navbar mobile pada desktop */
+  }
+  
+}
+
+@media (max-width: 991px) {
+  .d-none.d-lg-block {
+    display: none; /* Menyembunyikan elemen navbar desktop pada mobile */
+  }
+  
+}
+
+@media (max-width: 576px) {
+  .smaller-image {
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column; /* Agar ikon loading berada di bawah logo */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-icon {
+  margin-top: 5%; /* Jarak antara logo dan ikon loading */
+}
+
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.comments {
+  display: none;
+}
+.active-post .comments {
+  display: block;
+}
+.inactive-post {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .row.ms-5.mt-2 {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+
+  .col-md-6 {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .col-md-6 img {
+    width: 60%;
+    height: 50%;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+
+  .community {
+    display: none;
+  }
+
+
+}
+
+@media (max-width: 940px) {
+  .card-body {
+      margin-left: 20px; /* Mengurangi margin kiri pada ukuran layar kecil */
+  }
+
+  .card-body .badge-custom {
+      font-size: 10px; /* Mengecilkan ukuran font pada badge */
+      padding: 5px 10px; /* Mengurangi padding pada badge */
+  }
+
+  .card-body .card-title {
+      font-size: 14px; /* Mengecilkan ukuran font judul */
+  }
+
+  .card-body .card-text {
+      font-size: 12px; /* Mengecilkan ukuran font teks */
+  }
+
+  .card-body .full-posts {
+      font-size: 12px; /* Mengecilkan ukuran font link */
+  }
+}
+
+/* Floating Button for Mobile */
+.floating-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 25px;
+  background-color: #015AAA;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-decoration: none;
+}
+
+.floating-btn i {
+  font-size: 20px;
+  color: white;
+}
+
+/* Navbar Desktop */
+.navbar-light .nav-link:hover .fa-search {
+  color: #015AAA; /* Warna untuk ikon search saat dihover */
+}
+
+.navbar-light .nav-link:hover .bi-envelope {
+  color: #015AAA; /* Warna untuk ikon envelope saat dihover */
+}
+
+.navbar-light .nav-link:hover .bi-bell {
+  color: #015AAA; /* Warna untuk ikon bell saat dihover */
+}
+
+/* Navbar Mobile */
+.navbar-light .nav-link:hover .fas.fa-search {
+  color: #015AAA; /* Warna untuk ikon search di mobile saat dihover */
+}
+
+.test:hover{
+  color: orange;
+}
+
+/* Warna hover likes, comment, dll pada page utama */
+.like-icon {
+  color: black;
+  transition: color 0.3s;
+}
+
+.link-posts:hover .like-icon {
+  color: #ff4500; /* Ganti  warna saat hover */
+}
+
+.like-count {
+  margin-left: 8px;
+}
+
+a { color: inherit; }

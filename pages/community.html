@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/index.js"></script>
+  <style>
+      /* Gaya CSS tambahan */
+.nav-item:hover .nav-link {
+text-decoration: underline;
+}
+
+.profile-info {
+display: none;
+position: absolute;
+top: 40px;
+right: 0;
+background-color: #fff;
+border: 1px solid #ccc;
+padding: 10px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+z-index: 1;
+}
+
+.nav-item .profile:hover .profile-info {
+display: block;
+}
+
+.profile-info a {
+text-decoration: none;
+color: #333;
+display: block;
+}
+
+.profile-info a:hover {
+text-decoration: underline;
+}
+.profile-info p {
+margin: 5px 0;
+color: #333;
+}
+
+.icon.user.outline {
+color: black;
+}
+
+.hidden {
+display: none;
+}
+
+.navbar-bawah .nav-item .nav-link.active {
+    text-decoration: underline; 
+    color: #13005A !important; 
+}
+
+.community-background {
+    background-image: url('../img/comunity.jpg');
+    background-size: cover; /* Memastikan gambar mencakup seluruh div */
+    background-position: center; /* Membuat agar posisi gambar berada ditengah */
+    background-repeat: no-repeat; /* Mencegah pengulangan gambar */
+    background-color: #B4E8CE; /* Warna fallback jika gambar tidak dimuat */
+    padding: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: url('../img/comunity_new_banner.png');
+  background-size: cover;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  margin-top: 60px; /* Tambahkan margin atas */
+}
+
+/* Search Bar */
+.search-bar {
+  width: 50%;
+  max-width: 600px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.search-bar input {
+  border: none;
+  border-radius: 25px 0 0 25px;
+}
+
+.search-bar button {
+  border: none;
+  border-radius: 0 25px 25px 0;
+}
+
+/* Custom Card */
+.card-custom {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.card-custom .card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.card-custom .card-img-top {
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  border: 1px solid white;
+}
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 27%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Notification Modal */
+.notification-modal {
+  background: transparent;
+  display: flex;
+  align-items: flex-start; /* Align to the top */
+  justify-content: flex-end; /* Align to the right */
+  position: absolute;
+  top: 50px; /* Adjust this value based on your navbar height */
+  right: 10px; /* Adjust this value for horizontal alignment */
+  width: auto;
+}
+
+.notification-card {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 15px;
+  border-bottom-right-radius: 90px; /* Bottom-right corner */
+  border-top-right-radius: 0;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.notification-card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.notification-content {
+  flex-grow: 1;
+}
+
+.notification-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.notification-message {
+  color: #555;
+  margin: 5px 0;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.modal-content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.notification-card .notification-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-icon {
+  position: relative;
+}
+
+.notification-icon .red-dot {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-footer {
+  border-top: none;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-text {
+  margin-top: 0.5rem;
+}
+
+/* Sidebar Right */
+.sidebar-right {
+  left: 20px;
+  width: 200px;
+  height: 400px;
+  border-radius: 9px;
+}
+
+.border-custom {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: navajowhite;
+}
+
+.no-padding {
+  padding: 5%;
+  border: none;
+  border-radius: 0;
+}
+
+.content {
+  padding: 16px; /* Add padding for the content inside the sidebar */
+}
+
+.text-muted {
+  color: #adb5bd;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-2 {
+  margin-bottom: .5rem;
+}
+
+/* Media Queries */
+@media (max-width: 1199px) {
+  .bottom-nav .notification-icon {
+    position: relative;
+  }
+
+  .bottom-nav .notification-icon .red-dot {
+    top: -8%;
+    right: 35%;
+    transform: none;
+  }
+
+  .hero-section {
+    margin-top: 70px;
+  }
+
+  .search-bar {
+    width: 60%;
+    max-width: 400px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 991px) {
+  /* Mobile View */
+  .card-columns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-custom {
+    flex: 0 0 48%; /* 2 cards side by side with some gap */
+    margin: 1%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Smaller Mobile View */
+  .card-custom {
+    flex: 0 0 100%; /* Single card on smaller screens */
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Tablet View */
+  .card-custom {
+    flex: 0 0 48%; /* Smaller size for tablet view */
+    margin: 1%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* Small Desktop View */
+  .card-custom {
+    flex: 0 0 32%; /* Smaller size for small desktop view */
+    margin: 1%;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Large Desktop View */
+  .card-custom {
+    flex: 0 0 24%; /* Default size for large desktop view */
+    margin: 1%;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+<!-- Navbar untuk Desktop -->
+<nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="../img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+        </a>
+        <ul class="nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary  active text-decoration-underline" style="color: #015AAA !important;" href="./community.html">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="./home_events.html">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="#">E-Learning</a>
+            </li>
+        </ul>
+        <div class="navbar-text ms-auto">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="./search.html">
+                        <i class="fas fa-search"></i> 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="messages.html">
+                        <i class="bi bi-envelope"></i> 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link notification-icon" href="notification.html" data-bs-toggle="modal" data-bs-target="#notificationModal" id="notificationButton">
+                      <i class="bi bi-bell"></i>
+                      <div class="red-dot">3</div>
+                    </a>
+                  </li>         
+                <li class="nav-item">
+                  <div id="profileLink" class="nav-link profile">
+                      <div class="rounded-circle overflow-hidden ms-2" style="width: 25px; height: 25px; background-color: #f0f0f0;">
+                          <img id="userImage" src="../img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                      </div>
+                      <div id="profileInfo" class="profile-info">
+                          <p class="username">Christopher Kim</p>
+                          <p class="account">@johhnyray</p>
+                          <a href="./profile.html" class="view-profile">View my profile</a>
+                          <a href="my-events.html" class="my-events">My Events</a>
+                          <a href="manage-communities.html" class="manage-communities">Manage your communities</a>
+                          <hr class="my-2" style="border-top: 3px solid #E5E5E5;">
+                          <a href="./settings_profiles.html" class="settings">Settings</a>
+                          <a href="./pages/login.html" class="log-out">Log Out</a>
+                      </div>
+                  </div>
+              </li>                                                                                 
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Navbar untuk Mobile -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lg-none">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="flex-grow: 1">
+            <img src="../img/Thrivian Logo_OK.png" alt="Thrivian.org" width="50" />
+        </a>
+        <a href="search.html" class="search-icon ms-auto me-4">
+            <i class="fas fa-search"></i> 
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileContent" aria-controls="navbarMobileContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMobileContent">
+            <ul class="navbar-nav me-auto mb-lg-0 mt-3">
+                <button class="close-button ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileContent">✖</button>
+                <li class="nav-item">
+                    <a class="nav-link" href="community.html">Community</a>
+                    <hr class="my-2 custom-hr-mobile">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">Events</a>
+                    <hr class="my-2 custom-hr-mobile">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="e-learning.html">E-Learning</a>
+                    <hr class="my-2 custom-hr-mobile">
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings_profiles.html">Settings</a>
+                    <hr class="my-2 custom-hr-mobile">
+                </li>
+            </ul>
+            <div class="navbar-footer">
+                <div class="d-flex justify-content-center text-align-center mt-4">
+                    <span class="text-muted small fs-9" style="text-align: center; text-decoration: none;">
+                        <a href="about_us.html" class="text-muted">About Us</a> • 
+                        <a href="privacy_terms.html" class="text-muted">Privacy & Terms</a> • 
+                        <a href="more.html" class="text-muted">More</a>
+                        <p class="text-muted fs-9">Thrivian.org © 2024</p>
+                    </span>
+                  </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Sticky Bottom Navbar for Mobile -->
+<nav class="navbar fixed-bottom navbar-expand d-lg-none bottom-nav border border-dark" style="background-color: #fcfafa;">
+    <ul class="navbar-nav nav-justified w-100">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="../index.html"><i class="fa fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="./messages.html"><i class="far fa-envelope"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link notification-icon" href="./notification.html" data-bs-toggle="modal" data-bs-target="#notificationModal" id="notificationButton" style="color: black;">
+            <i class="bi bi-bell"></i>
+            <div class="red-dot">3</div>
+            </a>
+        </li>       
+        <li class="nav-item">
+            <a href="./profile.html">
+                <div class="rounded-circle overflow-hidden ms-5 mt-1" style="width: 25px; height: 25px; background-color: #f0f0f0;">
+                    <img id="userImage" src="../img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Floating Button for Mobile -->
+<a href="./create-community.html" class="floating-btn d-lg-none">
+    <i class="fas fa-pencil-alt"></i>
+</a>
+
+<!-- Tampilan untuk welcome community -->
+<section class="hero-section">
+    <h1>Welcome to Community page!</h1>
+    <p>Temukan dan ikuti Komunitas yang kamu inginkan</p>
+    <div class="search-bar d-flex">
+      <input type="text" class="form-control py-3" placeholder="Search for communities...">
+      <button class="btn btn-light"><i class="fas fa-search"></i></button>
+    </div>
+  </section>
+
+            
+  <main class="container-fluid" style="padding-inline: 12%;">
+    <div class="row">
+        <!-- Kolom kiri untuk card all community -->
+        <div class="col-md-8 col-lg-9 mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 style="color: #015AAA;">Communities for you</h3>
+                <a href="your-link-here.html" class="text-decoration-none px-3 py-1" style="background-color: #E7F0F7;">See more</a>
+            </div>
+            <div class="row">
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom"> 
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Finance content -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 style="color: #015AAA;">Finance</h3>
+                <a href="your-link-here.html" class="text-decoration-none px-3 py-1" style="background-color: #E7F0F7;">See more</a>
+            </div>
+            <div class="row">
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/buisness3.jpg');"></div>
+                        <img src="../img/buisnes3.jpg" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">The Visionaries</h5>
+                            <p class="card-text">Pioneers shaping the future with bold ideas.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                        <div class="card card-custom">
+                                <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                                    <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                                <div class="card-body text-center mt-5 pt-5">
+                                    <h5 class="card-title mt-5">Level Up Learners</h5>
+                                    <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                 <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card business content -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 style="color: #015AAA;">Business</h3>
+                <a href="your-link-here.html" class="text-decoration-none px-3 py-1" style="background-color: #E7F0F7;">See more</a>
+            </div>
+            <div class="row">
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/buisness3.jpg');"></div>
+                        <img src="../img/buisnes3.jpg" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">The Visionaries</h5>
+                            <p class="card-text">Pioneers shaping the future with bold ideas.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                        <div class="card card-custom">
+                                <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                                    <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                                <div class="card-body text-center mt-5 pt-5">
+                                    <h5 class="card-title mt-5">Level Up Learners</h5>
+                                    <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                 <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Self development content -->
+            <div class="d-flex justify-content-between align-items-center">
+                <h3 style="color: #015AAA;">Self-development</h3>
+                <a href="your-link-here.html" class="text-decoration-none px-3 py-1" style="background-color: #E7F0F7;">See more</a>
+            </div>
+            <div class="row">
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/buisness3.jpg');"></div>
+                        <img src="../img/buisnes3.jpg" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">The Visionaries</h5>
+                            <p class="card-text">Pioneers shaping the future with bold ideas.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                        <div class="card card-custom">
+                                <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                                    <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                                <div class="card-body text-center mt-5 pt-5">
+                                    <h5 class="card-title mt-5">Level Up Learners</h5>
+                                    <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                                    <div class="d-flex justify-content-center mt-3">
+                                        <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                <!-- Card content -->
+                <div class="col-md-4 col-sm-6 mb-4 grow-card">
+                    <div class="card card-custom">
+                        <div class="card-bg" style="background-image: url('../img/Rectangle\ 25.png');"></div>
+                        <img src="../img/Ellipse 37.png" class="card-img-top border-dark" alt="Card image">
+                        <div class="card-body text-center mt-5 pt-5">
+                            <h5 class="card-title mt-5">Level Up Learners</h5>
+                            <p class="card-text">Level Up Learners: Elevate your skills, empower your future.</p>
+                            <div class="d-flex justify-content-center mt-3">
+                                <a href="join_community.html" type="button" class="btn btn-light border-dark px-5" style="border-radius: 10px;">About Community</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Kolom kanan  -->
+        <div class="col-md-4 col-lg-3 pt-3">
+            <div class="sidebar bg-white border-custom d-none d-lg-block">
+                <!-- Button create community -->
+                 <a href="create-community.html">
+                <button type="button" class="btn btn-primary w-100 no-padding" data-toggle="modal" data-target="#createCommunityModal" style="background-color: #015AAA;">+ Create New Community</button>
+                </a>
+                <!-- Card my communities -->
+                <div class="content p-3">
+                    <h5>My Communities</h5>
+                    <div class="my-communities mb-3">
+                        <div class="community-item d-flex align-items-center mb-2">
+                            <img src="../img/Ellipse 37.png" alt="Community Icon" class="me-2" style="width: 30px;">
+                            <span>Business</span>
+                        </div>
+                        <hr>
+                        <div class="community-item d-flex align-items-center mb-2">
+                            <img src="../img/icon/Ellipse 14.png" alt="Community Icon" class="me-2" style="width: 30px;">
+                            <span>Business</span>
+                        </div>
+                        <hr>
+                        <div class="community-item d-flex align-items-center mb-2">
+                            <img src="../img/icon/Ellipse 15.png" alt="Community Icon" class="me-2" style="width: 30px;">
+                            <span>Business</span>
+                        </div>
+                        <hr class="p-0">
+                        <a href="#" class="d-flex text-decoration-none justify-content-center align-items-center"> <span><i class="bi bi-chevron-down fw-normal"></i>  See all</span></a>
+                    </div>
+                    <hr>
+                    <!-- Notifikasi Community -->
+                    <h5>Sent Invitations</h5>
+                    <div class="sent-invitations mb-3 text-center text-muted">
+                        <i class="bi bi-envelope mb-2" style="font-size: 24px;"></i>
+                        <p>No sent invitations</p>
+                    </div>
+                    <h5>Invite Request</h5>
+                    <div class="invite-requests text-center text-muted">
+                        <i class="bi bi-envelope mb-2" style="font-size: 24px;"></i>
+                        <p>No Requested Invitations</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+<!-- Modal Create Community -->
+<!-- <div class="modal fade" id="createCommunityModal">
+    <div class="modal-dialog">
+        <div class="modal-content bg-white">
+            <div class="modal-header">
+                <h4 class="modal-title">Create Community</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="communityName">Name<span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="communityName" placeholder="Ruang Sepi">
+                        <small class="form-text text-muted">This can be changed in Community settings.</small>
+                        <small class="form-text text-success">This name is available.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="communityDescription">Brief description</label>
+                        <textarea class="form-control" id="communityDescription" rows="3" placeholder="Ruang untuk kalian yang kesepian"></textarea>
+                        <small class="form-text text-muted">Include a few keywords to show people what to expect if they join.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="background-color: #015AAA; border-color: #015AAA;">Create</button>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+        </div>
+            </div>
+</main>
+
+
+<!-- Notification Modal -->
+<div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+    <div class="modal-dialog notification-modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="notification-card">
+                    <img src="../img/finance2.jpg" alt="Community Image">
+                    <div class="notification-content">
+                        <div class="notification-title">The Financials</div>
+                        <div class="notification-message">Invited you to join community</div>
+                        <div class="notification-time">1 second ago</div>
+                    </div>
+                </div>
+                <div class="notification-card">
+                    <img src="../img/buisnes3.jpg" alt="Community Image">
+                    <div class="notification-content">
+                        <div class="notification-title">The Bussiness</div>
+                        <div class="notification-message">Invited you to join community</div>
+                        <div class="notification-time">1 second ago</div>
+                    </div>
+                </div>
+                <div class="notification-card">
+                    <img src="../img/self-development.jpg" alt="Community Image">
+                    <div class="notification-content">
+                        <div class="notification-title">The Self Development</div>
+                        <div class="notification-message">Invited you to join community</div>
+                        <div class="notification-time">1 second ago</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pb-5"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Fungsi untuk menghapus kelas active dari semua elemen nav-link
+    function removeActiveClass() {
+        var navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+        });
+    }
+
+    // Fungsi untuk menambahkan kelas active ke teks yang diklik
+    function setActiveLink(link) {
+        removeActiveClass(); // Hapus kelas active dari semua elemen nav-link
+        link.classList.add('active'); // Tambahkan kelas active ke teks yang diklik
+    }
+
+    // Ambil semua elemen anchor dengan kelas nav-link
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    // Tambahkan event listener ke setiap elemen anchor
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            setActiveLink(link); // Ketika teks navigasi diklik, atur teks yang diklik sebagai aktif
+        });
+    });
+
+    // Fungsi untuk kategori post
+    function showPosts(category) {
+        var posts = document.getElementsByClassName('post');
+        for (var i = 0; i < posts.length; i++) {
+            var post = posts[i];
+            var postCategory = post.getAttribute('data-category');
+            if (category === 'All' || postCategory === category) {
+                post.style.display = 'block';
+            } else {
+                post.style.display = 'none';
+            }
+        }
+    }
+    
+</script>
+
+
+</body>
+</html>

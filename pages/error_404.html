@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 404</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .error-container {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .error-container img {
+      max-width: 100%;
+      height: 40%;
+    }
+
+    .error-content h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    .back-button {
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      background-color: #015AAA;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+
+    .back-button:hover {
+      background-color: #015AAA;
+      text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+      .error-content h1 {
+        font-size: 2rem;
+      }
+
+      .back-button {
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section error -->
+  <div class="error-container">
+    <!-- image error -->
+    <img src="../img/error_404.png" alt="Error Image">
+    <div class="error-content">
+      <h1>Ooops!</h1>
+      <p style="font-size: 1rem; font-weight: bold">We can’t seem to find a page you’re looking for</p>
+      <p style="font-size: 0.8rem;">error code: 404</p>
+      <!-- button kembali ke home -->
+      <a href="../index.html" class="back-button">Back to homepage</a>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

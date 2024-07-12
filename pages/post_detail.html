@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="../js/index.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Gaya CSS tambahan */
+        .nav-item:hover .nav-link {
+            text-decoration: underline;
+        }
+
+        .profile-info {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .nav-item .profile:hover .profile-info {
+            display: block;
+        }
+
+        .profile-info a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .profile-info a:hover {
+            text-decoration: underline;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .icon.user.outline {
+            color: black;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .navbar-bawah .nav-item .nav-link.active {
+            text-decoration: underline;
+            color: #13005A !important;
+        }
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.07);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.date-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 3px 2px;
+  font-weight: bold;
+  color: #13005A;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge .day {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.badge .month {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.badge {
+  background-color: #FFFFFF;
+  color: #13005A;
+  font-size: 16px;
+  padding: 3px 2px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+}
+
+        .comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            border-bottom: 1px solid #E5E5E5;
+            padding-bottom: 15px;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment img {
+            border-radius: 50%;
+        }
+
+        .comment h6 {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .comment p {
+            margin: 0;
+            text-align: justify;
+        }
+
+        .profile-image-container {
+        width: 50px;
+        height: 50px;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0; 
+}
+
+    .profile-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%; 
+}
+
+.badge-post {
+  color: #22145A;
+  border-color: #22145A;
+  padding: 0.5%;
+}
+.badge-post.active {
+  background-color: #13005A !important;
+  color: white !important;
+}
+
+/* Tambahkan media query untuk memperkecil ukuran di perangkat mobile */
+@media (max-width: 767px) {
+            .navbar-brand img {
+                width: 120px;
+            }
+
+            .nav-link {
+                font-size: 14px;
+            }
+
+            .nav-item .profile-info {
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            .nav-item .profile-info a {
+                font-size: 12px;
+            }
+
+            .profile-info p {
+                font-size: 12px;
+            }
+
+            .icon.user.outline {
+                font-size: 14px;
+            }
+
+            .comments {
+                margin-top: 10px;
+            }
+
+            .comment {
+                padding-bottom: 10px;
+            }
+
+            .comment h6 {
+                font-size: 14px;
+            }
+
+            .comment p {
+                font-size: 12px;
+            }
+
+            .profile-image-container {
+            width: 25px;
+            height: 25px;
+            margin-right: 10px;
+            display: inline-block;
+            vertical-align: top;
+            align-self: flex-start;
+            }
+
+            .profile-image {
+                width: 25px;
+                height: 25px;
+            }
+
+            .bottom-nav .nav-link {
+                font-size: 14px;
+            }
+
+            .bottom-nav .nav-item .rounded-circle {
+                width: 20px;
+                height: 20px;
+            }
+
+            .input-group input {
+                font-size: 12px;
+            }
+
+            .input-group button {
+                font-size: 12px;
+            }
+
+            .modal-body label {
+                font-size: 12px;
+            }
+
+            .modal-body textarea {
+                font-size: 12px;
+            }
+
+            .modal-body .form-text {
+                font-size: 10px;
+            }
+
+            .modal-footer button {
+                font-size: 12px;
+            }
+
+            .link-posts i {
+        font-size: 2px; /* Mengurangi ukuran font ikon */
+    }
+
+    .link-posts span {
+        font-size: 10px; /* Mengurangi ukuran font teks */
+        margin-left: 0px; /* Mengurangi margin kiri */
+    }
+
+    .link-posts {
+        margin-right: 0; /* Mengurangi margin kanan */
+        margin-left: 7px;
+    }
+        }
+
+    </style>
+</head>
+
+<body>
+  <!-- Navbar untuk Desktop -->
+  <nav class="navbar navbar-light bg-light fixed-top d-none d-lg-block">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="../img/Thrivian Logo_OK.png" alt="Thrivian.org" width="60" height="45" />
+        </a>
+        <ul class="nav me-auto">
+            <li class="nav-item">
+                <a class="nav-link text-secondary active text-decoration-underline" style="color: #015AAA !important" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="./community.html">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="./home_events.html">Events</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-secondary" href="#">E-Learning</a>
+            </li>
+        </ul>
+        <div class="navbar-text ms-auto">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="search.html">
+                        <i class="fas fa-search"></i> 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="messages.html">
+                        <i class="bi bi-envelope"></i> 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notification.html">
+                        <i class="bi bi-bell"></i> 
+                    </a>
+                </li>    
+                <li class="nav-item">
+                    <div id="profileLink" class="nav-link profile">
+                        <div class="rounded-circle overflow-hidden me-2" style="width: 25px; height: 25px; background-color: #f0f0f0">
+                            <img id="userImage" src="../img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover" />
+                        </div>
+                        <div id="profileInfo" class="profile-info">
+                            <p class="username">Christopher Kim</p>
+                            <p class="account">@johhnyray</p>
+                            <a href="./profile.html" class="view-profile">View my profile</a>
+                            <a href="./events.html" class="my-events">My Events</a>
+                            <a href="manage-communities.html" class="manage-communities">Manage your communities</a>
+                            <hr class="my-2" style="border-top: 3px solid #e5e5e5" />
+                            <a href="./settings_profiles.html" class="settings">Settings</a>
+                            <a href="./login.html" class="log-out">Log Out</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Navbar untuk Mobile -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top d-lg-none">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="flex-grow: 1">
+            <img src="../img/Thrivian Logo_OK.png" alt="Thrivian.org" width="50" />
+        </a>
+        <a href="search.html" class="search-icon ms-auto me-4">
+            <i class="fas fa-search"></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileContent" aria-controls="navbarMobileContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMobileContent">
+            <ul class="navbar-nav me-auto mb-lg-0 mt-3">
+                <button class="close-button ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileContent">✖</button>
+                <li class="nav-item">
+                    <a class="nav-link" href="./community.html">Community</a>
+                    <hr class="my-2 custom-hr-mobile" />
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./home_events.html">Events</a>
+                    <hr class="my-2 custom-hr-mobile" />
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="e-learning.html">E-Learning</a>
+                    <hr class="my-2 custom-hr-mobile" />
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./settings_profiles.html">Settings</a>
+                    <hr class="my-2 custom-hr-mobile" />
+                </li>
+            </ul>
+            <div class="navbar-footer">
+                <div class="d-flex justify-content-center text-align-center mt-4">
+                    <span class="text-muted small fs-9" style="text-align: center; text-decoration: none">
+                        <a href="about_us.html" class="text-muted">About Us</a> •
+                        <a href="privacy_terms.html" class="text-muted">Privacy & Terms</a> •
+                        <a href="more.html" class="text-muted">More</a>
+                        <p class="text-muted fs-9">Thrivian.org © 2024</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+  <!-- Sticky Bottom Navbar for Mobile -->
+  <nav class="navbar fixed-bottom navbar-expand d-lg-none bottom-nav border border-dark" style="background-color: #fcfafa;">
+    <ul class="navbar-nav nav-justified w-100">
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="../index.html"><i class="fa fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="messages.html"><i class="far fa-envelope"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="notification.html"><i class="bi bi-bell"></i></a>
+        </li>
+        <li class="nav-item">
+            <a href="./profile.html">
+                <div class="rounded-circle overflow-hidden ms-5 mt-1" style="width: 25px; height: 25px; background-color: #f0f0f0;">
+                    <img id="userImage" src="../img/3582.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </a>
+        </li>
+    </ul>
+  </nav>
+
+  <!-- Container utama konten -->
+    <main class="container-fluid border" style="margin-top: 6%;">
+        <div class="row justify-content-center">
+            <div class="col-3 border-start border-end ml-3 d-none d-md-block" style="overflow-y: auto;">
+                <!-- Tombol create post -->
+                <a href="create_post.html" type="button" class="btn btn-outline-light w-100 mt-2" style="border-radius: 30px; border-color: #015AAA; color: #015AAA;">
+                    <i class="fas fa-plus-circle" style="font-size: 15px; color: #015AAA;"></i>
+                    Create New Post
+                </a>
+                <div class="container mt-3">
+                    <h6 style="color: #015AAA;">My Communities</h6>
+                    <div class="d-flex align-items-center mt-2">
+                        <div class="rounded-circle overflow-hidden bg-light" style="width: 30px; height: 30px;">
+                            <img src="../img/icon/Ellipse 14.png" alt="Community Image" class="w-100 h-100 object-cover">
+                        </div>
+                        <a href="link_ke_halaman_komunitas_1" class="ms-2 text-dark text-decoration-none">Business</a>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <div class="rounded-circle overflow-hidden bg-light" style="width: 30px; height: 30px;">
+                            <img src="../img/icon/Ellipse 15.png" alt="Community Image" class="w-100 h-100 object-cover">
+                        </div>
+                        <a href="link_ke_halaman_komunitas_2" class="ms-2 text-dark text-decoration-none">Personal Development</a>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <div class="rounded-circle overflow-hidden bg-light" style="width: 30px; height: 30px;">
+                            <img src="../img/icon/Ellipse 16.png" alt="Community Image" class="w-100 h-100 object-cover">
+                        </div>
+                        <a href="link_ke_halaman_komunitas_3" class="ms-2 text-dark text-decoration-none">Finance</a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mt-2">
+                        <a href="#" class="text-decoration-none" style="color: #13005A;">
+                            <i class="fas fa-angle-down"></i> See All
+                        </a>
+                    </div>
+                </div>
+
+                <hr class="my-3" style="border-top: 3px solid #E5E5E5;">
+
+                <!-- Section Upcoming event sebelah kiri layar -->
+                <div class="mt-3">
+                    <h6 style="color: #015AAA;">Upcoming Events</h6>
+                
+                    <div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
+                        <div class="position-relative">
+                            <img src="../img/pidato.jpg" class="card-img-top img-fluid" alt="Pidato">
+                            <div class="date-badge">
+                                <span class="badge">
+                                    <div class="day">10</div>
+                                    <div class="month">Sept</div>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fs-6">Personal Finance Webinar</h5>
+                            <p class="card-text">Financial Freedom Community</p>
+                        </div>
+                    </div>
+                
+                    <div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
+                        <div class="row g-0">
+                            <div class="col-4 position-relative">
+                                <img src="../img/banner.jpg" class="img-fluid rounded-start" alt="Banner">
+                                <div class="date-badge">
+                                    <span class="badge">
+                                        <div class="day">10</div>
+                                        <div class="month">Sept</div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-6">Personal Finance Webinar</h5>
+                                    <p class="card-text">Financial Freedom Community</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="card mb-3" style="border-radius: 15px; overflow: hidden;">
+                        <div class="row g-0">
+                            <div class="col-4 position-relative">
+                                <img src="../img/waiting-room-with-monitors.jpg" class="img-fluid rounded-start" alt="Waiting Room">
+                                <div class="date-badge">
+                                    <span class="badge">
+                                        <div class="day">10</div>
+                                        <div class="month">Sept</div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-6">Personal Finance Webinar</h5>
+                                    <p class="card-text">Financial Freedom Community</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center text-align-center mt-4">
+                    <span class="text-muted small fs-9" style="text-align: center; text-decoration: none;">
+                        <a href="about_us.html" class="text-muted">About Us</a> •
+                        <a href="privacy_terms.html" class="text-muted">Privacy & Terms</a> •
+                        <a href="more.html" class="text-muted">More</a>
+                        <p class="text-muted fs-9">Thrivian.org © 2024</p>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Sortir berdasarkan kategori -->
+            <div class="col-md-8 border-end border-start mt-5 mt-md-0 mb-5 mb-md-0">
+                <div class="posts">
+                    <div class="posts mb-2">
+                        <div class="posts mb-2">
+                            <p class="mt-2"><b>Show posts from</b>
+                                <a href="#" id="allBtn" class="badge-post rounded-pill bg-light text-dark me-1 border border-secondary active" onclick="showPosts('All')">All</a>
+                                <a href="#" id="businessBtn" class="badge-post rounded-pill bg-light text-dark me-1 border border-secondary" onclick="showPosts('Business')">Business</a>
+                                <a href="#" id="financeBtn" class="badge-post rounded-pill bg-light text-dark border border-secondary" onclick="showPosts('Finance')">Finance</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Container isi post -->
+                <div class="all-posts overflow-auto" style="max-height: 1000px;">
+                    <div class="post mt-4 me-5" data-category="Business">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="rounded-circle overflow-hidden me-2" style="width: 50px; height: 50px; background-color: #f0f0f0;">
+                                <img src="../img/cheerful-confident-man-standing-arms-folded-plaid-shirt.jpg" alt="Profile Image" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <a class="full-post" style="text-decoration: none;">
+                                    <a href="people_profile.html"><h6 class="mb-0 text-dark fw-bold">Ray John <span class="text-muted"> @johhnyray • 3 minutes ago</span></h6></a>
+                                    <p class="fs-6" style="color: orange; margin-bottom: 0;"> > Business</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mb-0 ms-5 mb-2">
+                            <div class="col">
+                                <h5 class="mb-0 text-dark">What are the most important things to know about business?</h5>
+                            </div>
+                        </div>
+                        <div class="row mb-0 ms-5">
+                            <div class="col">
+                                <p class="mb-0 full-content" style="text-align: justify;">
+                                    You've heard it many times before but it’s so true. Without capital, you won’t survive. Be super cheap in the beginning
+                                    as you’ll make a lot of mistakes and then spend a lot once you know you’re right. This goes for everything from hiring
+                                    people to marketing budgets. I used to think corporate culture stuff was fluffy babble until I started a business and
+                                    saw how important it is to have a distinct culture. It’s what binds people together. If a person is not a good cultural fit,
+                                    it’s better they leave than try to “make it work.”It is so super easy to be doing a lot of things and thinking you are
+                                    making progress because it feels good to be busy. Meanwhile, you are addressing real issues that need to be solved. If you want to succeed, focus on the right things and be persistent.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-end mt-3 me-2">
+                            <div class="col-auto">
+                                <a class="link-posts me-3 me-md-5" href="javascript:void(0)" onclick="toggleIcon(event, 'likeIconOutline_6', 'likeIconSolid_6', 'likeCount_6')">
+                                    <i id="likeIconOutline_6" class="thumbs up outline black icon" style="font-size: 20px;"></i>
+                                    <i id="likeIconSolid_6" class="thumbs up black icon" style="font-size: 20px; display: none;"></i>
+                                    <span id="likeCount_6" style="margin-left: 5px; color: black;">5</span>
+                                </a>
+
+                                <a class="link-posts me-3 me-md-5" href="#">
+                                    <i class="comment alternate outline black icon" style="font-size: 20px;"></i>
+                                    <span style="margin-left: 5px; color: black;">5</span>
+                                </a>
+
+                                <a class="link-posts me-3 me-md-5" href="#">
+                                    <i class="bookmark outline black icon" style="font-size: 20px;"></i>
+                                    <span style="margin-left: 5px; color: black;">5</span>
+                                </a>
+
+                                <a class="link-posts me-1" href="#" data-bs-toggle="modal" data-bs-target="#collaborateModal">
+                                    <i class="fas fa-handshake" style="font-size: 20px; color: black;"></i>
+                                    <span style="margin-left: 5px; color: black;"></span>
+                                </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="collaborateModal" tabindex="-1" aria-labelledby="collaborateModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="collaborateModalLabel">Ask to Collaborate</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="collaborateMessage" class="form-label">Add an invitation note about what you want to collaborate!</label>
+                                                    <textarea class="form-control" id="collaborateMessage" rows="3" maxlength="80"></textarea>
+                                                    <div class="form-text">0/80</div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-secondary">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <hr class="mt-3" style="border-top: 3px solid #E5E5E5;">
+
+                        <div class="comments mt-3">
+                            <div class="row mb-0 ms-0 mt-3">
+                                <div class="col">
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Write your comment" aria-label="Write your comment" style="border-radius: 25px; margin-left: 7%;">
+                                                <button class="btn btn-primary" type="button" style="border-radius: 50px; margin-left: 3%;">Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-2 mt-4">
+                                        <div class="profile-image-container me-2">
+                                            <img src="../img/cheerful-confident-man-standing-arms-folded-plaid-shirt.jpg" alt="Profile Image" class="profile-image">
+                                        </div>
+                                        <div>
+                                            <div class="full-post" style="text-decoration: none;">
+                                                <a href="people_profile.html"><h6 class="mb-0 text-dark fw-bold">Ray John <span class="text-muted"> @johhnyray • 3 minutes ago</span></h6></a>
+                                                <p class="mt-1" style="text-align: justify;">
+                                                    Nope, you got it wrong, the most important on business is Decision-Making and Problem-Solving. Bold decision-making and creative problem-solving are essential skills.
+                                                </p>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="profile-image-container me-2">
+                                            <img src="../img/cheerful-confident-man-standing-arms-folded-plaid-shirt.jpg" alt="Profile Image" class="profile-image">
+                                        </div>
+                                        <div>
+                                            <div class="full-post" style="text-decoration: none;">
+                                                <a href="people_profile.html"><h6 class="mb-0 text-dark fw-bold">Ray John <span class="text-muted"> @johhnyray • 3 minutes ago</span></h6></a>
+                                                <p class="mt-1" style="text-align: justify;">
+                                                    Nope, you got it wrong, the most important on business is Decision-Making and Problem-Solving. Bold decision-making and creative problem-solving are essential skills.
+                                                </p>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="profile-image-container me-2">
+                                            <img src="../img/cheerful-confident-man-standing-arms-folded-plaid-shirt.jpg" alt="Profile Image" class="profile-image">
+                                        </div>
+                                        <div>
+                                            <div class="full-post" style="text-decoration: none;">
+                                                <a href="people_profile.html"><h6 class="mb-0 text-dark fw-bold">Ray John <span class="text-muted"> @johhnyray • 3 minutes ago</span></h6></a>
+                                                <p class="mt-1" style="text-align: justify;">
+                                                    Nope, you got it wrong, the most important on business is Decision-Making and Problem-Solving. Bold decision-making and creative problem-solving are essential skills.
+                                                </p>                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
